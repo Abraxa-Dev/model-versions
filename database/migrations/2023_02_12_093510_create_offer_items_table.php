@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('offer_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('offer_version_id')->constrained();
+            $table->string('uid');
             $table->string('name');
             $table->timestamps();
+
+            $table->unique(['offer_version_id', 'uid']);
         });
     }
 
